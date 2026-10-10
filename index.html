@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Fatema Waly, software engineer based in London. Projects, experience and contact.">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Fatema Waly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an observatory log — sky-map hero, then a ruled ledger of work with measured results set in mono */
+:root{
+  --paper:#F3F5F9; --surface:#FFFFFF; --ink:#111A33; --muted:#5A6482; --rule:#D7DCE8;
+  --accent:#2F49D8; --accent-soft:#E3E8FC; --flare:#E2961C;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --sky0:#E9EDF7; --sky1:#2F49D8;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0B1022; --surface:#121935; --ink:#E8ECF8; --muted:#97A1C2; --rule:#252E52;
+  --accent:#8EA2FF; --accent-soft:#1C2550; --flare:#F2B24A; --sky0:#141B38; --sky1:#8EA2FF; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#0B1022; --surface:#121935; --ink:#E8ECF8; --muted:#97A1C2; --rule:#252E52;
+  --accent:#8EA2FF; --accent-soft:#1C2550; --flare:#F2B24A; --sky0:#141B38; --sky1:#8EA2FF; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 1rem/1.65 var(--body);padding-inline:clamp(16px,5vw,56px);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin-inline:auto}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+.label{font:500 .72rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px;flex-wrap:wrap}
+nav .mark{font:800 1.05rem/1 var(--display);letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:clamp(12px,3vw,28px);list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{color:var(--muted);text-decoration:none;font-size:.92rem}
+nav ul a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(28px,6vw,72px) clamp(40px,7vw,88px)}
+.hero > *{min-width:0}
+.hero h1{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800;line-height:.95;letter-spacing:-.035em}
+.hero h1 span{color:var(--accent)}
+.hero .role{margin:22px 0 0;font:500 .85rem/1.5 var(--mono);color:var(--muted)}
+.hero p.lede{font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:56ch;margin:20px 0 0}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;font:600 .92rem/1 var(--body);text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover{transform:translateY(-1px)}
+.social{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px;font:500 .85rem/1 var(--mono)}
+.social a{color:var(--muted);text-decoration:none}
+.social a:hover{color:var(--accent)}
+.repo{font:500 .82rem/1 var(--mono);text-decoration:none}
+.repo:hover{text-decoration:underline}
+.contact .social a{color:var(--paper);opacity:.8}
+.contact .social a:hover{opacity:1}
+.sky{position:relative;aspect-ratio:1;max-width:100%;width:100%}
+.sky canvas{width:100%;height:100%;display:block}
+.sky figcaption{margin-top:10px;font:400 .72rem/1.4 var(--mono);color:var(--muted)}
+
+/* stats strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--rule)}
+.strip div{padding:22px 18px;border-left:1px solid var(--rule)}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip b{display:block;font:600 clamp(1.5rem,3vw,2.1rem)/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.strip span{display:block;margin-top:8px;font-size:.85rem;color:var(--muted)}
+
+section{padding-block:clamp(56px,8vw,96px)}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:36px}
+.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;letter-spacing:-.025em}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.proj{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.proj.feature{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start}
+.proj.feature > *{min-width:0}
+.proj h3{font-size:1.35rem;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.proj .when{font:400 .75rem/1 var(--mono);color:var(--muted)}
+.proj p{margin:0;color:var(--ink)}
+.proj ul{margin:0;padding-left:1.1em;color:var(--ink)}
+.proj li{margin-top:6px}
+.metric{display:flex;align-items:baseline;gap:10px;padding-top:14px;border-top:1px dashed var(--rule);margin-top:auto}
+.metric b{font:500 1.6rem/1 var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+.metric span{font-size:.85rem;color:var(--muted)}
+.metrics{display:grid;gap:14px}
+.metrics .metric{margin-top:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font:400 .72rem/1 var(--mono);padding:6px 9px;border-radius:999px;background:var(--accent-soft);color:var(--ink)}
+
+/* experience */
+.xp{display:grid;gap:0}
+.job{display:grid;grid-template-columns:200px 1fr;gap:28px;padding-block:30px;border-top:1px solid var(--rule)}
+.job:last-child{border-bottom:1px solid var(--rule)}
+.job > *{min-width:0}
+.job .meta{font:400 .82rem/1.6 var(--mono);color:var(--muted)}
+.job .meta b{display:block;color:var(--ink);font-weight:500}
+.job h3{font-size:1.3rem;font-weight:600}
+.job h3 small{font:400 1rem var(--body);color:var(--muted)}
+.job ul{margin:12px 0 0;padding-left:1.1em}
+.job li{margin-top:8px;max-width:68ch}
+.live{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font:500 .8rem/1 var(--mono)}
+.live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--flare);box-shadow:0 0 0 4px color-mix(in srgb,var(--flare) 25%,transparent)}
+
+/* skills + education */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px)}
+.two > *{min-width:0}
+.skillset{display:grid;gap:22px}
+.skillset h3{font:500 .72rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.edu{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:28px}
+.edu h3{font-size:1.5rem;font-weight:600;line-height:1.2}
+.edu .grade{display:inline-block;margin-top:14px;font:500 .82rem/1 var(--mono);padding:8px 12px;border-radius:999px;background:var(--ink);color:var(--paper)}
+.edu p{margin:14px 0 0;color:var(--muted)}
+.edu dl{margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:.92rem}
+.edu dt{font:400 .78rem/1.6 var(--mono);color:var(--muted)}
+.edu dd{margin:0}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper);border-radius:20px;padding:clamp(28px,6vw,64px);display:grid;gap:24px}
+.contact h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;letter-spacing:-.03em;line-height:1}
+.contact p{margin:0;max-width:52ch;opacity:.85}
+.email{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.email code{font:500 clamp(.95rem,2.4vw,1.25rem)/1.3 var(--mono);word-break:break-all;user-select:all}
+.contact .btn{border-color:var(--paper);color:var(--paper)}
+.contact .btn.primary{background:var(--paper);color:var(--ink)}
+footer{padding-block:32px;font:400 .78rem/1.5 var(--mono);color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:820px){
+  .hero,.two,.proj.feature{grid-template-columns:1fr}
+  .sky{max-width:420px}
+  .projects{grid-template-columns:1fr}
+  .strip{grid-template-columns:1fr 1fr}
+  .strip div:nth-child(3){border-left:0;padding-left:0}
+  .strip div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .job{grid-template-columns:1fr;gap:10px}
+}
+@media (prefers-reduced-motion:reduce){ .btn:hover{transform:none} }
+</style>
+
+<div class="wrap">
+  <nav aria-label="Primary">
+    <a class="mark" href="#top">Fatema Waly</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <p class="label">Software Engineer · London, UK</p>
+      <h1 style="margin-top:18px">Fatema<br><span>Waly</span></h1>
+      <p class="role">BEng Software Engineering, First Class Honours · University of Southampton, 2026</p>
+      <p class="lede">I build software that has to be fast and correct at the same time: real-time 3D visualisation for telescope scheduling, live trading systems over WebSockets, and the booking platform for a business I co-founded.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See selected work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/fatema-waly-450171297/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/FatemaWaly" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <figure class="sky" style="margin:0">
+      <canvas id="sky" aria-label="Illustrative sky map of probability tiles, a nod to the telescope scheduling project" role="img"></canvas>
+      <figcaption>Illustration: sky tiles shaded by localisation probability, with a scheduled observation path.</figcaption>
+    </figure>
+  </header>
+
+  <div class="strip" role="list">
+    <div role="listitem"><b>&lt;100 ms</b><span>1,000-tile sky map render</span></div>
+    <div role="listitem"><b>86.8%</b><span>GA matched brute-force optimum</span></div>
+    <div role="listitem"><b>92.2%</b><span>fewer intermediate tuples</span></div>
+    <div role="listitem"><b>89.9%</b><span>AI misinformation detection</span></div>
+  </div>
+
+  <section id="work">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+      <span class="label">2025 – 2026</span>
+    </div>
+    <div class="projects">
+
+      <article class="proj feature">
+        <div style="display:grid;gap:14px">
+          <span class="when">Final-year project · Sep 2025 – May 2026</span>
+          <h3>Interactive 3D Visualiser for Explainable Telescope Scheduling</h3>
+          <p>A planning tool for time-domain astronomy. Astronomers see gravitational-wave sky maps in 3D and plan which tiles to observe before scientific deadlines run out. The dissertation was awarded First Class.</p>
+          <ul>
+            <li>Rendered 1,000-tile sky maps in under 100 ms by merging every tile into a single mesh.</li>
+            <li>Built a threaded genetic algorithm scheduler and benchmarked it against brute force across 500,000 configurations.</li>
+            <li>Validated with 71 automated tests.</li>
+          </ul>
+          <div class="tags"><span>Python</span><span>PySide6</span><span>PyVista</span><span>VTK</span><span>NumPy</span></div>
+          <a class="repo" href="https://github.com/FatemaWaly/Interactive-3D-Visualizer-for-Explainable-Telescope-Scheduling-in-Time-Domain-Astronomy" target="_blank" rel="noopener">View source on GitHub ↗</a>
+        </div>
+        <div class="metrics">
+          <div class="metric"><b>&lt;100 ms</b><span>render, 1,000 tiles</span></div>
+          <div class="metric"><b>86.8%</b><span>of runs hit the exact optimum</span></div>
+          <div class="metric"><b>0.46%</b><span>mean gap to optimum</span></div>
+          <div class="metric"><b>500k</b><span>configurations tested</span></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <span class="when">Dec 2025 – Jan 2026</span>
+        <h3>Alpha Royale: real-time trading game</h3>
+        <p>A live 1v1 trading game. Durable Object alarms poll Finnhub prices every 10 seconds and Supabase Realtime pushes updates to both players.</p>
+        <ul>
+          <li>8-table PostgreSQL schema processing Buy, Sell, Take-Profit and Stop-Loss orders each tick, secured with Row Level Security.</li>
+          <li>Vitest unit, integration and end-to-end suites.</li>
+        </ul>
+        <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Cloudflare Workers</span><span>Supabase</span><span>Vercel</span></div>
+        <div class="metric"><b>10 s</b><span>price tick · 4.4k lines of code</span></div>
+      </article>
+
+      <article class="proj">
+        <span class="when">Apr – May 2026</span>
+        <h3>Query optimiser for a relational DBMS</h3>
+        <p>A cost estimator for SJDB that walks query plans depth-first with the Visitor pattern, predicts intermediate relation sizes, and drives greedy join ordering.</p>
+        <ul>
+          <li>Pushed selections onto scans, replaced Product + Select with joins, and projected after each join.</li>
+        </ul>
+        <div class="tags"><span>Java</span><span>SQL</span><span>Query planning</span></div>
+        <div class="metric"><b>−92.2%</b><span>intermediate tuples</span></div>
+      </article>
+
+      <article class="proj">
+        <span class="when">Dec 2025 – Jan 2026</span>
+        <h3>Scene recognition classifier</h3>
+        <p>Built and benchmarked k-NN and Bag-of-Visual-Words pipelines to classify 2,985 images across 15 scene categories, using dense SIFT, spatial pyramids and a linear SVM tuned by cross-validation.</p>
+        <div class="tags"><span>Python</span><span>OpenCV</span><span>scikit-learn</span><span>NumPy</span></div>
+        <div class="metric"><b>76.5%</b><span>average precision</span></div>
+      </article>
+
+      <article class="proj">
+        <span class="when">Feb – May 2025</span>
+        <h3>Runway operations management system</h3>
+        <p>A JavaFX tool that recalculates declared runway distances (TORA, TODA, ASDA, LDA) around obstacles, with top-down, side-on and satellite views, automatic rotation to compass heading, and XML import/export.</p>
+        <div class="tags"><span>Java</span><span>JavaFX</span><span>SQL</span><span>JUnit</span></div>
+        <div class="metric"><b>4</b><span>declared distances recalculated live</span></div>
+      </article>
+
+      <article class="proj">
+        <span class="when">Oct – Nov 2025</span>
+        <h3>Real-time multiplayer web app</h3>
+        <p>Multiplayer sessions for up to 8 concurrent players, keeping state consistent across clients over WebSockets with event-driven synchronisation.</p>
+        <div class="tags"><span>Vue.js</span><span>Node.js</span><span>Socket.IO</span><span>Azure Functions</span></div>
+        <div class="metric"><b>8</b><span>concurrent players per session</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="experience" style="padding-top:0">
+    <div class="sec-head">
+      <h2>Experience</h2>
+    </div>
+    <div class="xp">
+      <div class="job">
+        <div class="meta"><b>H.M Glass</b>Cairo, Egypt<br>Jun 2026 – Present</div>
+        <div>
+          <h3>Co-Founder &amp; Software Engineer</h3>
+          <ul>
+            <li>Co-founded an automotive glass supply and installation business. I own its full technology stack and digital acquisition.</li>
+            <li>Built a bilingual Arabic/English (RTL/LTR) booking platform that replaced phone-only scheduling, with an admin dashboard for stock, approvals and WhatsApp rescheduling, secured with Row Level Security.</li>
+          </ul>
+          <a class="live" href="https://hmglasseg.com" target="_blank" rel="noopener">hmglasseg.com · live</a>
+          <div class="tags" style="margin-top:14px"><span>Next.js 14</span><span>Tailwind CSS</span><span>Supabase</span></div>
+        </div>
+      </div>
+      <div class="job">
+        <div class="meta"><b>Dell Technologies</b>Cairo, Egypt<br>Aug – Sep 2025</div>
+        <div>
+          <h3>Software Engineer Intern</h3>
+          <ul>
+            <li>Built the detection layer of SpotAI, training a scikit-learn model that detects AI-generated misinformation with 89.9% accuracy on a Kaggle dataset.</li>
+            <li>Delivered a working SpotAI prototype covering detection, watermarking-based prevention and an awareness platform to Dell mentors and leadership.</li>
+            <li>Completed 180+ hours of Dell workshops in Agile, JavaScript/Node.js and machine learning.</li>
+          </ul>
+          <div class="tags" style="margin-top:14px"><span>Python</span><span>scikit-learn</span><span>Node.js</span><span>Agile</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" style="padding-top:0">
+    <div class="two">
+      <div>
+        <div class="sec-head"><h2>Toolkit</h2></div>
+        <div class="skillset">
+          <div><h3>Languages</h3><div class="tags"><span>Python</span><span>Java</span><span>TypeScript</span><span>JavaScript</span><span>SQL</span><span>C#</span><span>Haskell</span><span>Assembly</span></div></div>
+          <div><h3>Frameworks &amp; libraries</h3><div class="tags"><span>Next.js</span><span>Node.js</span><span>Express</span><span>Vue.js</span><span>Socket.IO</span><span>JavaFX</span><span>PySide6</span><span>PyVista / VTK</span><span>NumPy</span><span>pandas</span><span>scikit-learn</span><span>OpenCV</span></div></div>
+          <div><h3>Cloud &amp; data</h3><div class="tags"><span>PostgreSQL</span><span>Supabase</span><span>Cloudflare Workers</span><span>Vercel</span><span>Azure Functions</span><span>Google App Engine</span></div></div>
+          <div><h3>Practice</h3><div class="tags"><span>REST APIs</span><span>WebSockets</span><span>CI/CD</span><span>Linux</span><span>Git</span><span>JUnit / Vitest</span><span>Jira</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-head"><h2>Education</h2></div>
+        <div class="edu">
+          <span class="label">Sep 2023 – May 2026</span>
+          <h3 style="margin-top:12px">University of Southampton</h3>
+          <p style="color:var(--ink);margin-top:6px">BEng Software Engineering</p>
+          <span class="grade">First Class Honours</span>
+          <dl>
+            <dt>Dissertation</dt><dd>Explainable telescope scheduling, First Class</dd>
+            <dt>Societies</dt><dd>Cyber Security, ECS, Archery, Fencing, Horse Riding, Gliding</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="contact">
+      <span class="label" style="color:inherit;opacity:.7">Open to graduate software engineering roles in the UK</span>
+      <h2>Let's talk.</h2>
+      <p>I'm based in London and happy to interview in person or remotely.</p>
+      <div class="email">
+        <code id="addr">fatemawaly2005@gmail.com</code>
+        <button class="btn primary" id="copy" type="button">Copy email</button>
+        <a class="btn" href="mailto:fatemawaly2005@gmail.com">Open mail app</a>
+      </div>
+      <div class="email">
+        <code id="phone">+44 7554 747495</code>
+        <button class="btn" id="copyPhone" type="button">Copy number</button>
+      </div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/fatema-waly-450171297/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/FatemaWaly" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Fatema Waly</span>
+    <span>London, United Kingdom</span>
+  </footer>
+</div>
+
+<script>
+// copy buttons
+[['copy','addr','Copy email'],['copyPhone','phone','Copy number']].forEach(([b, src, label]) => {
+  document.getElementById(b).addEventListener('click', e => {
+    const btn = e.currentTarget, el = document.getElementById(src), text = el.textContent.replace(/\s/g, src === 'phone' ? '' : ' ');
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = label, 1800); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Press Ctrl+C'; };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch { fallback(); }
+  });
+});
+
+// sky map illustration
+(() => {
+  const cv = document.getElementById('sky'), ctx = cv.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // deterministic pseudo-random
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const N = 1000, tiles = [];
+  const blobs = [[.62,.38,.16],[.38,.62,.11],[.55,.58,.07]];
+  for (let i = 0; i < N; i++) {
+    // fibonacci disc
+    const r = Math.sqrt((i + .5) / N), a = i * 2.39996323;
+    const x = .5 + .46 * r * Math.cos(a), y = .5 + .46 * r * Math.sin(a);
+    let p = 0; for (const [bx, by, s] of blobs) p += Math.exp(-((x-bx)**2 + (y-by)**2) / (2*s*s));
+    tiles.push({x, y, p: Math.min(1, p) * (.85 + .15 * rnd())});
+  }
+  const ranked = tiles.map((t, i) => [t.p, i]).sort((a, b) => b[0] - a[0]).slice(0, 14).map(d => tiles[d[1]]);
+  // greedy nearest-neighbour path through top tiles
+  const path = [ranked.shift()];
+  while (ranked.length) { const last = path[path.length-1]; let bi = 0, bd = 9;
+    ranked.forEach((t, i) => { const d = (t.x-last.x)**2 + (t.y-last.y)**2; if (d < bd) { bd = d; bi = i; } });
+    path.push(ranked.splice(bi, 1)[0]); }
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const hex = h => { h = h.replace('#',''); return [0,2,4].map(i => parseInt(h.slice(i,i+2),16)); };
+  function draw(t) {
+    const dpr = devicePixelRatio || 1, w = cv.clientWidth; if (!w) return;
+    if (cv.width !== w * dpr) { cv.width = cv.height = w * dpr; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, w);
+    const c0 = hex(css('--sky0')), c1 = hex(css('--sky1')), rule = css('--rule'), flare = css('--flare');
+    // graticule
+    ctx.strokeStyle = rule; ctx.lineWidth = 1;
+    for (let k = 1; k <= 4; k++) { ctx.beginPath(); ctx.arc(w/2, w/2, w*.46*k/4, 0, 7); ctx.stroke(); }
+    for (let k = 0; k < 6; k++) { const a = k * Math.PI / 6; ctx.beginPath();
+      ctx.moveTo(w/2 + Math.cos(a)*w*.46, w/2 + Math.sin(a)*w*.46); ctx.lineTo(w/2 - Math.cos(a)*w*.46, w/2 - Math.sin(a)*w*.46); ctx.stroke(); }
+    const s = w * .0125;
+    for (const tl of tiles) { const m = tl.p;
+      ctx.fillStyle = `rgb(${c0.map((v,i) => Math.round(v + (c1[i]-v)*m)).join(',')})`;
+      ctx.fillRect(tl.x*w - s/2, tl.y*w - s/2, s, s); }
+    // schedule path
+    const prog = reduce ? 1 : ((t / 6000) % 1.25);
+    const upto = Math.min(path.length, prog * path.length * 1.0 + 1);
+    ctx.strokeStyle = flare; ctx.lineWidth = 1.6; ctx.beginPath();
+    for (let i = 0; i < Math.floor(upto); i++) { const p = path[i]; i ? ctx.lineTo(p.x*w, p.y*w) : ctx.moveTo(p.x*w, p.y*w); }
+    ctx.stroke();
+    for (let i = 0; i < Math.floor(upto); i++) { const p = path[i];
+      ctx.fillStyle = flare; ctx.beginPath(); ctx.arc(p.x*w, p.y*w, 3.2, 0, 7); ctx.fill(); }
+  }
+  let raf; const loop = t => { draw(t); if (!reduce) raf = requestAnimationFrame(loop); };
+  if (reduce) draw(0); else raf = requestAnimationFrame(loop);
+  draw(6000 * 1.0);
+  addEventListener('resize', () => draw(performance.now()));
+})();
+</script>
+
+</body>
+</html>
