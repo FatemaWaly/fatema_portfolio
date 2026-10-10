@@ -1,4 +1,4 @@
-# Fatema Waly — Portfolio
+# Fatema Waly - Portfolio
 
 Open `index.html` in any browser to view the site. Everything (HTML, CSS, JavaScript) is in that one file; fonts load from Google Fonts.
 
